@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    {% include 'commons/header.html' %}
+    <h1>Hello welcome to the blogs page!</h1>
+
+    {% for i in objects %}
+    <div style="border: 3px solid black; margin:2px 6px; padding: 10px;">
+        <h3>{{forloop.counter}} {{i.title}}</h3>
+        <div style="display: flex;">
+            <img height="200" ; width="200" src="{{i.image.url}}" alt="" style="margin-right: 20px;">
+            <div style=" flex: 1;">
+                <h4>{{i.sub_title}}</h4>
+                <p>{{i.short_description}}</p>
+                <a href="/blog/{{i.id}}">View detail</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</body>
+
+</html>

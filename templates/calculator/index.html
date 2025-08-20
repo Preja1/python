@@ -1,0 +1,32 @@
+<!-- objects:{{objects}}
+object List:{{object_list}} -->
+{% include 'common/header.html' %}
+
+<table style="border: 1px black solid;">
+    <thead>
+        <th>S.N</th>
+        <th>NumberA</th>
+        <th>NumberB</th>
+        <th>Operation</th>
+        <th>Operation Status</th>
+        <th>Result</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for i in objects %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.number_a}}</td>
+            <td>{{i.number_b}}</td>
+            <td>{{i.operation}}</td>
+            <td>{{i.operation_status}}</td>
+            <td>{{i.result}}</td>
+            <td>
+                <a href="{% url 'calc-update' i.pk %}">Edit</a>
+                <a href="{% url 'calc-delete' i.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
